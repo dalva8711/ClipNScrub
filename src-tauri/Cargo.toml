@@ -1,0 +1,21 @@
+[package]
+name = "clipnscrub"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Offline clipboard sanitizer for macOS and Windows"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+scrub-core = { path = "../crates/scrub-core" }
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-single-instance = "2"
+tauri-plugin-notification = "2"
+arboard = { version = "3", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tempfile = "3"
+
