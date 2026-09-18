@@ -47,7 +47,7 @@ Windows interactive acceptance require separate validation before distribution.
 
 ### Local validation — 2026-09-18
 
-- Apple Silicon host: all 22 Rust tests passed, strict Clippy passed, TypeScript
+- Apple Silicon host: all 23 Rust tests passed, strict Clippy passed, TypeScript
   check and Vite production build passed.
 - Apple Silicon and Intel macOS `.app` packages built successfully. The Apple
   Silicon app bundle is approximately 5.5 MiB (excluding system webview).

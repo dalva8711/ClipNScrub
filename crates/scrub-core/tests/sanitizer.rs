@@ -25,6 +25,15 @@ fn preserves_env_json_and_yaml_syntax() {
 }
 
 #[test]
+fn escaped_quotes_do_not_leave_a_secret_suffix() {
+    assert_eq!(
+        scrub(r#"{"api_key":"first\"second", "customer_id":"a\"b"}"#),
+        r#"{"api_key":"<REDACTED>", "customer_id":"<CUSTOMER_ID_1>"}"#
+    );
+    assert_eq!(scrub("password: 'first''second'"), "password: '<REDACTED>'");
+}
+
+#[test]
 fn aws_formats_and_context() {
     assert_eq!(scrub("AKIAABCDEFGHIJKLMNOP ASIA1234567890123456\nAWS_SECRET_ACCESS_KEY=short-test\nAWS_SESSION_TOKEN=another-test"), "<REDACTED> <REDACTED>\nAWS_SECRET_ACCESS_KEY=<REDACTED>\nAWS_SESSION_TOKEN=<REDACTED>");
 }

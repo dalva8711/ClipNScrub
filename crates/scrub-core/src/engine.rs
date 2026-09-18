@@ -42,7 +42,7 @@ static IPV6: LazyLock<Regex> = LazyLock::new(|| regex(r"[0-9A-Fa-f:.]*:[0-9A-Fa-
 // Capture only values, preserving assignment syntax, surrounding quotes and whitespace.
 static FIELD: LazyLock<Regex> = LazyLock::new(|| {
     regex(
-        r#"(?im)(?:^|[\s{,;])['"]?([A-Za-z_][A-Za-z0-9_.-]*)['"]?[ \t]*[:=][ \t]*(?:"([^"\r\n]*)"|'([^'\r\n]*)'|([^\s,;\}\]"']+))"#,
+        r#"(?im)(?:^|[\s{,;])['"]?([A-Za-z_][A-Za-z0-9_.-]*)['"]?[ \t]*[:=][ \t]*(?:"((?:\\[^\r\n]|[^"\\\r\n])*)"|'((?:''|\\[^\r\n]|[^'\\\r\n])*)'|([^\s,;\}\]"']+))"#,
     )
 });
 static PLACEHOLDER: LazyLock<Regex> =
